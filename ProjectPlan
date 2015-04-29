@@ -1,0 +1,36 @@
+Project Plan
+
+Basically the idea is to do a simple example analysis of some of the bus information available
+from Colorado Springs. They are online files that have static information about bus routes, including
+bus stop locations, and also dynamic information about what is going on in the system. There is
+no real point to looking at the dynamic information for this purpose, (plus, I can't find it on the
+city web site), so at least as a starting point, just use the static information.
+
+Forget about maps, that is too complicated. Ideally, maybe it could have something like a comparison
+between the bus stop locations and frequency of bus arrivals at each stop, in relation to the population
+within some area around the stop. But that is too hard for now.
+
+So the goal is to do something simpler that involves opening and parsing and reading from the files.
+
+Would be nice to use my theory about vector space norms.  :-)
+
+Output needs to be tabular, to avoid hassles about drawing pictures.
+
+So maybe something like fit the stop physical location to an area--variable sized cells. Then calculate
+for each cell the number of times a bus stops. That would give a crude estimate of the density (area per arrival)
+for each individual stop. Question would be how to do that calculation. Probably already published.
+
+Then the output would just be the list of stops and their individual densities.
+
+It is a Voronoi diagram. http://en.wikipedia.org/wiki/Voronoi_diagram
+
+Use discrete Manhattan norm and find the regions by iteration. Start by trying different macro-regions to see what it takes to get about 5 points into each region. Then prune the work list so you only work with the five.
+
+No, that is too complicated. Just divide the area into a bunch of square regions, and report whether they have
+a bus stop or not.
+
+Next question is whether there is already a Python library for reading the information in the bus
+database files. https://developers.google.com/transit/gtfs/reference?csw=1
+
+Yes: https://github.com/google/transitfeed
+
