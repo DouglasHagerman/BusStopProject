@@ -1,33 +1,43 @@
-#!/usr/bin/python -tt
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0
-# http://www.apache.org/licenses/LICENSE-2.0
+# file location: 
+# Copyright notation:
+# License notation:
+# Author: Douglas Hagerman 
 
-# Google's Python Class
-# http://code.google.com/edu/languages/google-python-class/
+""" This is a rough starting point for processing transit files.
+    
+    Run this program from the command line like this:
+    $python3 hello.py stopsShortened.txt
 
-"""A tiny Python program to check that Python is working.
-Try running this program from the command line like this:
-  python hello.py
-  python hello.py Alice
-That should print:
-  Hello World -or- Hello Alice
-Try changing the 'Hello' to 'Howdy' and run again.
-Once you have that working, you're ready for class -- you can edit
-and run Python code; now you just need to learn Python!
+    Output is:
+    Main
+    Program arguments: ['hello.py', 'stopsShortened.txt']
+    followed by a list of latitudes, longitudes, and stop names
 """
 
 import sys
+import re
+#import /Users/douglashagerman/Library/Python/2.7/lib/python/site-packages/transitfeed
 
-# Define a main() function that prints a little greeting.
+
+# Main function that prints header and loops through list of bus stops.
 def main():
-  # Get the name from the command line, using 'World' as a fallback.
-  if len(sys.argv) >= 2:
-    name = sys.argv[1]
-  else:
-    name = 'World'
-  print 'Howdy', name
 
-# This is the standard boilerplate that calls the main() function.
+  print ('Main')
+  print ('Program arguments:', sys.argv)
+
+  file_name = sys.argv[1]
+  fp = open(file_name)
+  for line in fp:
+    
+    lat, b, c, lon, e, f, g, h, stopname, j, k = line.split (',')
+    print (lat, lon, stopname)
+
+    # Process the info from the line
+    # ...
+    
+  fp.close()
+
+
+# Call the main() function.
 if __name__ == '__main__':
   main()
