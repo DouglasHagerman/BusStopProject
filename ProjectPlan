@@ -34,3 +34,6 @@ database files. https://developers.google.com/transit/gtfs/reference?csw=1
 
 Yes: https://github.com/google/transitfeed
 
+File needed is stops.txt.
+Items needed from file are stop_id, stop_lat, and stop_lon.
+
